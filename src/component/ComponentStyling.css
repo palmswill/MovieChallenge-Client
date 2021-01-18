@@ -1,0 +1,79 @@
+.resultDisplay{
+    border: 2px solid grey;
+    padding:1%;
+    min-height:30vh;
+    margin:1%;
+    
+}
+
+#searchArea{
+    padding:5%;
+    min-height:20vh;
+    display:flex;
+    box-sizing:border-box;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background-size:cover;
+    background-image:url("https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?cs=srgb&dl=pexels-donald-tong-66134.jpg&fm=jpg");
+} 
+.searchFlex{
+    padding:3px;
+
+}
+
+#searchBar{
+    height:5vh;
+    width:30vw
+
+}
+#searchButton{
+    position:relative;
+    height:5.6vh;
+    right:5.6vh;
+    background:transparent;
+    border:none;
+    width:5.6vh;
+}
+
+
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-0.1px, -0.2px) rotate(-1deg); }
+    20% { transform: translate(-0.3px, 0px) rotate(1deg); }
+    30% { transform: translate(0.3px, 0.2px) rotate(0deg); }
+    40% { transform: translate(0.1px, -0.1px) rotate(1deg); }
+    50% { transform: translate(-0.1px, 0.2px) rotate(-1deg); }
+    60% { transform: translate(-0.3px, 0.1px) rotate(0deg); }
+    70% { transform: translate(0.3px, 0.1px) rotate(-1deg); }
+    80% { transform: translate(-0.1px, -0.1px) rotate(1deg); }
+    90% { transform: translate(0.1px, 0.2px) rotate(0deg); }
+    100% { transform: translate(0.1px, -0.2px) rotate(-1deg); }
+  }
+
+
+
+.alert-red{
+    background-color:lightcoral;
+    text-decoration-color: brown;
+    min-width:60vw;
+    border-radius:2px;
+    min-height:3vh;
+    animation:shake 0.5s;
+}
+
+.alert-green{
+    background-color:greenyellow;
+    text-decoration-color: lightgreen;
+    min-width:60vw;
+    border-radius:2px;
+    min-height:3vh;
+    animation:shake 0.5s;
+}
+
+.alert-empty{
+    min-width:60vw;
+    border-radius:5px;
+    min-height:3vh;
+}

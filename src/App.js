@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import './component/ComponentStyling.css'
+import MovieNomination from './component/MovieNomination';
+import ResultDisplay from './component/ResultDisplay';
+import SearchBar from './component/Searchbar.js';
+import MovieSearchContextProvider from './context/MovieContext.js';
+import Loader from 'react-loader-spinner';
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="title"><h1>The Shoppies</h1>
+    <Loader
+         id="loader"
+         type="Grid"
+         color="#00BFFF"
+         height={50}
+         width={50} 
+      /></div>
+      <MovieSearchContextProvider>
+        <SearchBar />
+        <ResultDisplay/>
+        <MovieNomination/>
+      </MovieSearchContextProvider>
     </div>
   );
 }

@@ -1,0 +1,27 @@
+.resultDisplay{
+    display:grid;
+    border-style:solid;
+    padding:2%;
+    height:80%;
+    grid-template-columns:50% 50%;
+    grid-template-rows:15% 85%;
+    grid-gap:3%;
+}
+
+.resultDisplay:hover{
+    background-color: lightgray;
+}
+
+.title{
+    grid-column:1/3;
+}
+
+#poster{
+    height:90%;
+}
+
+#infoDisplay{
+    text-align:left;
+    max-height:100%;
+
+}
