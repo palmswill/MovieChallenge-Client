@@ -33,7 +33,7 @@ const DetailedDisplay = ({ title }) => {
 
 
     const removeNomination = (title) => {
-        setNomination(nomination.filter(name => name !== title))
+        setNomination(nomination.filter(name => name.title !== title))
 
     }
 

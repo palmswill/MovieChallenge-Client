@@ -2,22 +2,22 @@ import React, { useState, useContext } from 'react';
 
 import { MovieSearchContext } from '../context/MovieContext';
 
-
+///the top search section
 const SearchBar = () => {
 
     const { setErrorMessage, setSearchWord, errorMessage } = useContext(MovieSearchContext);
 
-
+///capturing the searchvalue inside the search bar
     const [searchValue, setSearchValue] = useState("");
 
 
 
-///check submit value, id value send value to moviecontext
+///check search value if submbitted, check its validity and  send the  value to moviecontext, then clear searchbar whether value is valid or not.
     const handleSubmit = (e) => {
 
         e.preventDefault();
         if (searchValue.length) {
-            ///check if submit value is English, if so, submit to moviecontext to send to api for search
+            ///check if submit value is only English/Number/Space, if so, submit to moviecontext 
             if (!/^[a-zA-Z0-9 ]+$/.test(searchValue)) {
                 setErrorMessage("Entry must only be English or Number!")
             }
@@ -30,7 +30,7 @@ const SearchBar = () => {
         }
         setSearchValue("");
     }
-
+    ///detect searchvalue in searchbar, if changed update the search value
     const handleSearchBarChange = (e) => {
         setSearchValue(e.target.value);
     }

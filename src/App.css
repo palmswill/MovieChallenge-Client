@@ -7,9 +7,8 @@ p{
   font-size:2vh;
 }
 
-#title{
-  display:flex;
-  gap:3vw;
+#titleBar{
+  margin-left:2vw;
   
  
 }

@@ -14,7 +14,7 @@ const DisplayCard=({info})=>{
 
     const handleNomination=(title)=>{
         if (nomination.length<5){
-        setNomination([...nomination,title])
+        setNomination([...nomination,{title:info.Title , poster:info.Poster}])
         if (errorMessage.length){
             setErrorMessage("");
         }
@@ -30,6 +30,7 @@ const DisplayCard=({info})=>{
 
         }
     }
+        
     
 
     return(
@@ -40,7 +41,8 @@ const DisplayCard=({info})=>{
             <p>Year: {info.Year}</p>
             <p>Type:{info.Type}</p>
             <p>imdbID: {info.imdbID}</p>
-            <button disabled={nomination.includes(info.Title)} onClick={()=>handleNomination(info.Title)}>Nominate</button> 
+            {/*filter if any tiltle in nomination fits the current title, if there is more than one, disable button*/ }
+            <button disabled={nomination.filter(nominate=>nominate.title===info.Title).length?(true):(false)} onClick={()=>handleNomination(info.Title)}>Nominate</button> 
         </div>    
         </div>
     )
