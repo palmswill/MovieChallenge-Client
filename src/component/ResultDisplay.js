@@ -25,7 +25,7 @@ const ResultDisplay = () => {
     ///if searching, display result according to year of release, else,display empty text
     return (
         <div>
-            <div className={resultDisplayStyle.nominationCount}> Current Nomination Count: {nomination.length}/5 <button onClick={() => handleClearNomination()}>Remove all</button><button onClick={() => { handleClearSearch() }}>Clear Search</button></div>
+            <div className={resultDisplayStyle.nominationCount}> Current Nomination Count: {nomination.length}/5 <button onClick={() => handleClearNomination()}>Remove all nominations</button><button onClick={() => { handleClearSearch() }}>Clear Search</button></div>
             {searchWord.length ? (
                 //// determine if search appear
                 <div className="resultDisplay">
@@ -33,7 +33,11 @@ const ResultDisplay = () => {
                         //// if searchResult apear, display result, if not display loading screen
                         <div>
                             <div className={resultDisplayStyle.searchTitle}>{"Result for: \"" + searchWord + "\""}</div>
-                            <div className={resultDisplayStyle.resultDisplayGrid}>{searchResult.sort((a, b) => b.Year - a.Year).map(result => { return (<DisplayCard key={result.imdbID} info={result} />) })}</div>
+                            <div className={resultDisplayStyle.resultDisplayGrid}>
+                            {
+                                searchResult.sort((a, b) => 
+                                b.Year - a.Year)
+                                .map(result => { return (<DisplayCard key={result.imdbID} info={result} />) })}</div>
                         </div>) : (
                             <div className={resultDisplayStyle.emptyDisplay}>
                                 <Loader

@@ -1,5 +1,5 @@
 .slideShowContainer{
-    margin:2% 0%;
+    margin:1% 0%;
     height:60vh;
     background-color: lightgrey;
 
@@ -24,7 +24,20 @@
 
 .show{
     display:block !important;
+    animation-name:fade;
+    animation-duration:1.5s;
+    
 }
+
+.hide{
+    display:none !important;
+}
+
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
 
 .numberText{
     color: #f2f2f2;
@@ -73,5 +86,7 @@
       width:10%;
       top:45%;
       left:45%;
-
+     
   }
+
+  

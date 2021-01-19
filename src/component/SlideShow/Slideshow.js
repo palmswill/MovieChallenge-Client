@@ -7,10 +7,23 @@ import slideShowStyle from './SlideShow.module.css';
 
 const SlideShow = () => {
     const { nomination } = useContext(MovieSearchContext);
+    /// the slide index
     const [slide, setSlide] = useState(1);
     ///to hold timeout function
     const timeoutRef = useRef();
+    ///determine if slider is loading
+    const isLoading=useRef(true);
 
+
+
+    
+
+   
+
+    
+
+    
+    ///change slide to selected slide, reset all other timer
     const hanldeManualChangeSlide = (index) => {
         window.clearTimeout(timeoutRef.current);
         setSlide(index)
@@ -32,20 +45,30 @@ const SlideShow = () => {
         }
 
     }, [slide, nomination.length]);
+    
     ////cleartimeout and restart counting if nomination list change
     useEffect(() => {
+        ///notice a significant amount of loading time when nomination is 1,added loader,can hide after image since image does not disappear
+        if (nomination.length===1){
+             isLoading.current=true;
+        }
         return () => window.clearTimeout(timeoutRef.current);
 
 
     }, [nomination.length])
 
-    // console.log(slide);
+    // console.log(slide)
 
 
-    return nomination.length > 1 ? (
+    useEffect(()=>{
+
+    })
+
+
+    return nomination.length ? (
         <div className={slideShowStyle.slideShowContainer}>
             <div className={slideShowStyle.slideSlot}>
-                <div className={slideShowStyle.Loader}>
+                { <div className={slideShowStyle.Loader}  style={{display:isLoading.current?("block"):("none")}}>
                     <Loader
                         id="loader"
                         type="Grid"
@@ -54,17 +77,17 @@ const SlideShow = () => {
                         width={50}
                     />
 
-                </div>
+                </div> }
                 {nomination.map((value, index) => {
                     return (
                         (index + 1 === slide) ? (
-                            <div key={index + 1} className={`${slideShowStyle.slide} ${slideShowStyle.show}`}>
+                            <div key={index + 1}  onLoad={()=>isLoading.current=false} className={`${slideShowStyle.slide} ${slideShowStyle.show}`}>
                                 <div className={slideShowStyle.numberText}>{index + 1 + "/5"} </div>
                                 <img className={slideShowStyle.poster} src={value.poster} alt={value.title} />
                                 <div className={slideShowStyle.text}>{value.title}</div>
                             </div>
                         ) : (
-                                <div key={index + 1} className={slideShowStyle.slide}>
+                                <div key={index + 1}  onLoad={()=>isLoading.current=false}  className={slideShowStyle.slide}>
                                     <div className={slideShowStyle.numberText}>{index + 1 + "/5"} </div>
                                     <img className={slideShowStyle.poster} src={value.poster} alt={value.title} />
                                     <div className={slideShowStyle.text}>{value.title}</div>
