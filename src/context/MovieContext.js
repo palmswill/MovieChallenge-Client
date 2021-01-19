@@ -15,15 +15,26 @@ const MovieSearchContextProvider = (props) => {
     ///NominationList,capture nomination in local storage, if not then init state with any empty list
     const [nomination,setNomination]=useState(JSON.parse(localStorage.getItem("nomination"))||[]);
 
-
+    
    
 
     useEffect(() => {
         ///send nomination to local storage if changes
-        
+            if (nomination.length<=5){
             localStorage.setItem("nomination",JSON.stringify(nomination));
+            setErrorMessage("");
+            }
+            if(nomination.length===5){
+                setErrorMessage("You have now reached 5 Nomination")
+            }
+
+            
         
     }, [nomination])
+
+
+
+    
 
 
     

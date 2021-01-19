@@ -7,12 +7,12 @@ const SearchBar = () => {
 
     const { setErrorMessage, setSearchWord, errorMessage } = useContext(MovieSearchContext);
 
-///capturing the searchvalue inside the search bar
+    ///capturing the searchvalue inside the search bar
     const [searchValue, setSearchValue] = useState("");
 
 
 
-///check search value if submbitted, check its validity and  send the  value to moviecontext, then clear searchbar whether value is valid or not.
+    ///check search value if submbitted, check its validity and  send the  value to moviecontext, then clear searchbar whether value is valid or not.
     const handleSubmit = (e) => {
 
         e.preventDefault();
@@ -24,11 +24,9 @@ const SearchBar = () => {
             else {
                 setSearchWord(searchValue);
             }
+            setErrorMessage("");
+            setSearchValue("");
         }
-        else {
-            setErrorMessage("")
-        }
-        setSearchValue("");
     }
     ///detect searchvalue in searchbar, if changed update the search value
     const handleSearchBarChange = (e) => {
@@ -37,10 +35,10 @@ const SearchBar = () => {
 
     const ErrorDisplay = (message) => {
         return message.length > 1 ?
-        ///if error is reaching 5 nomination, display green alert, all other errors display red
-            (message==="You have now reached 5 Nomination"?(<div className="alert-green searchFlex">{message}</div>):(
-            
-            <div className="alert-red searchFlex">{message}</div>)) : (<div className="alert-empty searchFlex"></div>)
+            ///if error is reaching 5 nomination, display green alert, all other errors display red
+            (message === "You have now reached 5 Nomination" ? (<div className="alert-green searchFlex">{message}</div>) : (
+
+                <div className="alert-red searchFlex">{message}</div>)) : (<div className="alert-empty searchFlex"></div>)
 
     }
 
@@ -53,7 +51,8 @@ const SearchBar = () => {
                 <button id="searchButton" type="submit"><i className="fas fa-search"></i></button>
             </form>
             <div>{
-                ErrorDisplay(errorMessage)}
+                ErrorDisplay(errorMessage)
+                }
             </div>
         </div>
     )

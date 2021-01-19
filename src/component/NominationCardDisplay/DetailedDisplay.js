@@ -37,12 +37,12 @@ const DetailedDisplay = ({ title }) => {
 
     }
 
-
+// 
 
 
 
     return Object.keys(info).length?(
-        <section id={info.Title} className={detailedDisplayStyle.displaygrid}>
+        <section id={info.Title+" detail"} className={detailedDisplayStyle.displaygrid}>
             <div className={detailedDisplayStyle.title}>{info.Title}</div>
             <img className={detailedDisplayStyle.poster} src={info.Poster} alt={info.Title}/>
             <div>Language: {info.Language}</div>
