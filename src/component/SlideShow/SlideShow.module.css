@@ -28,6 +28,9 @@
     animation-duration:1.5s;
     
 }
+.show:hover{
+    cursor:pointer;
+}
 
 .hide{
     display:none !important;
